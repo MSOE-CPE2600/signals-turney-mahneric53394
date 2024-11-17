@@ -4,9 +4,13 @@
  */
 
 /**
- * Modified by:
+ * Modified by: Eric Mahn
  * 
- * Brief summary of modifications:
+ * Brief summary of modifications: The lab wanted us to make it so the
+ * signal no longer goes to the handler, and this can be done by
+ * replacing the SIGINT with SIGKILL, since that immediately
+ * terminates the process. Also prints the pid to easily
+ * kill it
  */
 
 
@@ -26,8 +30,9 @@ void handle_signal() {
 int main() {
 
     // Register for the signal
-    signal(SIGINT, handle_signal);
+    signal(SIGKILL, handle_signal);
 
+    printf("Process ID: %d\n", getpid());
     // Wait until a signal is received
     while(1) {
         printf("Sleeping\n");
