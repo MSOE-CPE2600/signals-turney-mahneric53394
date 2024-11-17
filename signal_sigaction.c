@@ -32,8 +32,6 @@ int main() {
     sa.sa_flags = SA_SIGINFO;
     sa.sa_sigaction = handler;
 
-    //sigemptyset(&sa.sa_mask);
-
     //set the signal
     sigaction(SIGUSR1, &sa, NULL);
 
